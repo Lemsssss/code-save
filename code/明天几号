@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include <stdbool.h>
+
+struct date {
+    int month;
+    int day;
+    int year;
+};
+bool isleap(struct date p);
+bool Endmonth(struct date p);
+int main(int argc, char const* argv[])
+{
+    struct date today;
+    struct date tomorrow;
+
+    printf("enter date(year month day)\n");
+    scanf_s("%d %d %d", &today.year, &today.month, &today.day);
+
+    if (!Endmonth(today)) {
+        tomorrow.day = today.day + 1;
+        tomorrow.month = today.month;
+        tomorrow.year = today.year;
+    }
+    else {
+        if (Endmonth(today) && today.month != 12) {
+            tomorrow.day = 1;
+            tomorrow.month = today.month + 1;
+            tomorrow.year = today.year;
+        }
+        else {
+            tomorrow.day = 1;
+            tomorrow.month = 1;
+            tomorrow.year = today.year + 1;
+        }
+    }
+    printf("tomorrow is %d-%d-%d\n", tomorrow.year, tomorrow.month, tomorrow.day);
+    return 0;
+}
+
+
+bool Endmonth(struct date p) {
+    int i = 0;
+    int month[12] = { 31,28,31,30,31,30,31,31,30,31,30,31 };
+    if (p.month == 2) {
+        if ((p.year % 4 == 0 && p.year % 100 != 0) || p.year % 400 == 0) {
+            if (p.day == 29) {
+                i = 1;
+            }
+        }
+    }
+    if (p.day == month[p.month - 1]) {
+        i = 1;
+    }
+    return (i == 1);
+}
+
+bool isleap(struct date p) {
+
+}
