@@ -1,0 +1,15 @@
+include <stdio.h>
+#include <windows.h>
+void pri(int a);
+int main()
+{
+    pri('H');
+      return 0;
+}
+void pri(int a) {
+    int n = 'A';
+    for (; n <= a; n++) {
+        printf("%c\n", n);
+        Sleep(20);
+    }
+}
