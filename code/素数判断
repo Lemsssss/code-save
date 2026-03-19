@@ -1,0 +1,27 @@
+int isprime(int x, int knowprime[], int knownnumber);
+int main()
+{
+    int  const number = 10;
+    int prime[number] = {2};
+    int i = 3;//被测数字
+    int count = 1;//数组序号
+    for (i=3;count<number ;i++){
+        if (isprime(i,prime,count)) {
+            prime[count++] = i;         
+        }
+    }
+    for (i=0;i<number;i++) {
+        printf("%d ", prime[i]);
+    }
+    return 0;
+}
+int isprime(int x, int konwprime[], int knownnumber) {
+    int ret = 1;
+    int i;
+    for (i=0;i<knownnumber;i++) {
+        if (x%konwprime[i]==0) {
+            ret = 0;
+            break;
+        }
+    }
+    return ret;
