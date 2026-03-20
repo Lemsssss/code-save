@@ -1,0 +1,39 @@
+#define MAXN 10
+#include<stdio.h>
+int even(int n);
+int OddSum(int List[], int N);
+
+int main()
+{
+    int List[MAXN], N, i;
+
+    scanf_s("%d", &N);
+    printf("Sum of ( ");
+    for (i = 0; i < N; i++) {
+        scanf_s("%d", &List[i]);
+        if (even(List[i]) == 0)
+            printf("%d ", List[i]);
+    }
+    printf(") = %d\n", OddSum(List, N));
+
+    return 0;
+}
+
+int even(int n) {
+    int i;
+    if (n % 2 == 0) {
+        i = 1;
+    }
+    else i = 0;
+    return i;
+}
+int OddSum(int List[], int N) {
+    int i;
+    int sum=0;
+    for (i=0;i<N;i++) {
+        if (even(List[i])==0) {
+            sum += List[i];
+        }
+    }
+    return sum;
+}
